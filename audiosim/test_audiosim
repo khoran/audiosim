@@ -1,0 +1,50 @@
+'''
+Test harness for audiosim project
+Use: Update 'resource_path' in main function to be path of .wav files
+
+Author: Tim Huynh
+'''
+
+import os
+
+def get_all_files(path):
+    fl = []
+    for (dirpath, dirnames, filenames) in os.walk(path):
+        for f in filenames:
+            f = dirpath + '/' + f
+            fl.append(f)
+        break
+    return fl
+
+# function definitions to be tested
+def empty_function(a):
+    print(a)
+
+def empty_function_2(b):
+    print('asdf' + b)
+
+# dictionary containing function pointers
+func_dict = {
+    'empty_function': empty_function,
+    'empty_function_2': empty_function_2
+}
+
+# Main test function
+# Uses all functions defined in func_dict and stores output to dictionary
+def test_function(filename):
+    for function in func_dict:
+        print('Running ' + function)
+        func_dict[function](filename)
+
+def test_all_files(filelist):
+    for file in filelist:
+        test_function(file)
+
+
+if __name__ == "__main__":
+    resource_path = "D:/My Documents/projects/audiosim/resources"
+    # get all files to test
+    filelist = get_all_files(resource_path)
+    print('Files in ' + resource_path)
+    print(filelist)
+    test_all_files(filelist)
