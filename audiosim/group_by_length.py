@@ -5,6 +5,31 @@ Author: Tim Huynh
 
 import wave, contextlib, os
 
+def quickSort(array, low, high):
+    if low >= high:
+        return
+
+    pivot = array[low].fileLength
+    i = low
+    j = high
+
+    while i <= j :
+        while array[i].fileLength < pivot and i <= high :
+            i = i + 1
+        while array[j].fileLength > pivot and j >= low :
+            j = j - 1
+        
+        if i <= j :
+            temp = array[i]
+            array[i] = array[j]
+            array[j] = temp
+            i = i + 1
+            j = j - 1
+
+    quickSort(array, low, j)
+    quickSort(array, i, high)
+
+
 class Wav:
     def __init__(self, filepath, fileLength):
         self.filepath = filepath
@@ -37,11 +62,13 @@ def group_by_length(directory):
         wavDetails = Wav(file, length)
         filesDetails.append(wavDetails)
 
+    quickSort(filesDetails, 0, len(filesDetails) - 1)
     return filesDetails
 
 
 if __name__ == '__main__':
     #fileLength = get_file_length("D:/My Documents/Projects/audiosim/resources/LimbuProg30Sec.wav")
     #print(fileLength)
-    groups = group_by_length("D:/My Documents/Projects/audiosim/resources")
+    #groups = group_by_length("D:/My Documents/Projects/audiosim/resources")
+    groups = group_by_length('C:/Users/Rachel/workspace/audiosim/resources')
     print(groups)
