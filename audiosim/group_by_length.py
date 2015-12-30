@@ -3,7 +3,7 @@ This module contains filter functions that reduces the set of audio files to run
 Author: Tim Huynh
 '''
 
-import wave, contextlib, os
+import wave, contextlib, os, sys
 
 def quickSort(array, low, high):
     if low >= high:
