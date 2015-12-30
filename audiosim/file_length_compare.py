@@ -1,3 +1,6 @@
+# This algorithm is still very inefficient because it adds many of the pairs more than once
+# Memoization using hashing must be added in order for this algorithm to be useful.
+
 # Parameters : sorted list, integer representing max difference in length of files that should be compared
 # Returns list of pairs of files that should be compared based on similarity in length
 def findPairs(slist, dif):
