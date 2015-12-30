@@ -62,13 +62,14 @@ def group_by_length(directory):
         wavDetails = Wav(file, length)
         filesDetails.append(wavDetails)
 
-    quickSort(filesDetails, 0, len(filesDetails) - 1)
+    quickSort(filesDetails, 0, len(filesDetails) - 1)   # comment out this line for unsorted list
     return filesDetails
 
 
 if __name__ == '__main__':
-    #fileLength = get_file_length("D:/My Documents/Projects/audiosim/resources/LimbuProg30Sec.wav")
-    #print(fileLength)
-    #groups = group_by_length("D:/My Documents/Projects/audiosim/resources")
-    groups = group_by_length('C:/Users/Rachel/workspace/audiosim/resources')
-    print(groups)
+    # run script py group_by_length.py {working_dir}
+    workingDir = str(sys.argv[1])
+    wavDescriptors = group_by_length(workingDir)
+    print(wavDescriptors)
+
+    # can run functions on wavDescriptors here
